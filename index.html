@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rangkuman Ferry x Timothy Ronald - Edukasi & Ekonomi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .emoji {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .menu-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-title {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .menu-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu-item {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background: linear-gradient(45deg, #5a6fd8, #6a42a0);
+        }
+
+        .menu-item.active {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+        }
+
+        .menu-icon {
+            font-size: 1.1rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            position: relative;
+        }
+
+        .section h2::before {
+            content: attr(data-number);
+            position: absolute;
+            left: -40px;
+            top: -5px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .section p, .section li {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .section ul {
+            margin-left: 20px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            margin: 15px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .vocabulary-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            margin-top: 30px;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .vocab-table th {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .vocab-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .vocab-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .vocab-table tr:hover {
+            background-color: #e3f2fd;
+            transition: background-color 0.3s ease;
+        }
+
+        .tag {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 5px 5px 5px 0;
+        }
+
+        .navigation {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .nav-dot {
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: #667eea;
+            transform: scale(1.5);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section h2::before {
+                display: none;
+            }
+            
+            .navigation {
+                display: none;
+            }
+            
+            .vocab-table {
+                font-size: 0.9rem;
+            }
+
+            .menu-grid {
+                gap: 10px;
+            }
+
+            .menu-item {
+                font-size: 0.8rem;
+                padding: 10px 15px;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-to-top:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="emoji">🧭</span>
+            <h1>Ferry x Timothy Ronald</h1>
+            <p>Edukasi, Ekonomi, dan Pandangan Masa Depan</p>
+        </div>
+
+        <div class="menu-container">
+            <div class="menu-title">📋 Navigasi Cepat</div>
+            <div class="menu-grid">
+                <button class="menu-item active" onclick="scrollToSection('section1')" data-section="section1">
+                    <span class="menu-icon">🧭</span>
+                    Misi & Pendidikan
+                </button>
+                <button class="menu-item" onclick="scrollToSection('section2')" data-section="section2">
+                    <span class="menu-icon">🎯</span>
+                    Strategi Media
+                </button>
+                <button class="menu-item" onclick="scrollToSection('section3')" data-section="section3">
+                    <span class="menu-icon">📈</span>
+                    Bitcoin & Zero-Sum
+                </button>
+                <button class="menu-item" onclick="scrollToSection('section4')" data-section="section4">
+                    <span class="menu-icon">🧠</span>
+                    Edukasi Ekonomi
+                </button>
+                <button class="menu-item" onclick="scrollToSection('section5')" data-section="section5">
+                    <span class="menu-icon">💣</span>
+                    Propaganda & Kontrol
+                </button>
+                <button class="menu-item" onclick="scrollToSection('section6')" data-section="section6">
+                    <span class="menu-icon">🔐</span>
+                    Kebebasan Finansial
+                </button>
+                <button class="menu-item" onclick="scrollToSection('section7')" data-section="section7">
+                    <span class="menu-icon">💥</span>
+                    Realitas Sosial
+                </button>
+                <button class="menu-item" onclick="scrollToSection('section8')" data-section="section8">
+                    <span class="menu-icon">📦</span>
+                    Masa Depan Uang
+                </button>
+                <button class="menu-item" onclick="scrollToSection('vocabulary')" data-section="vocabulary">
+                    <span class="menu-icon">📚</span>
+                    Kosakata
+                </button>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="section active" id="section1">
+                <h2 data-number="1">Misi Hidup & Nilai Pendidikan</h2>
+                <p>Timothy Ronald merasa punya panggilan di bidang pendidikan sejak lama, bukan karena uang semata. Ia memiliki visi yang jelas untuk memberikan dampak positif bagi masyarakat melalui edukasi.</p>
+                
+                <div class="highlight">
+                    <strong>Target Ambisius:</strong> Membangun 1000 sekolah, meskipun secara finansial itu menghambat compound kekayaan pribadi.
+                </div>
+                
+                <div class="quote">
+                    "Kalau uang cuma buat diri sendiri, buat apa?"
+                </div>
+                
+                <p>Filosofi ini menunjukkan bahwa Timothy tidak hanya fokus pada akumulasi kekayaan, tetapi juga pada penciptaan dampak sosial yang berkelanjutan melalui pendidikan.</p>
+            </div>
+
+            <div class="section" id="section2">
+                <h2 data-number="2">Strategi Media & Kliping</h2>
+                <p>Strategi distribusi konten (clipping) milik Timothy dirancang sangat sistematis dan terstruktur untuk memaksimalkan jangkauan dan dampak pesan.</p>
+                
+                <div class="highlight">
+                    <strong>Komponen Strategi:</strong>
+                    <ul>
+                        <li><strong>Narasi:</strong> Pesan yang terstruktur dan konsisten</li>
+                        <li><strong>Persona:</strong> Karakter yang autentik dan relatable</li>
+                        <li><strong>Isi Video:</strong> Konten yang berkualitas dan bersubstansi</li>
+                    </ul>
+                </div>
+                
+                <p>Banyak yang mencoba meniru strategi ini tapi gagal, karena yang penting bukan hanya sistemnya, tetapi substansi dan personalitas pembawa konten.</p>
+                
+                <p>Konten dikemas sederhana untuk menjangkau publik luas sambil tetap menyisipkan edukasi yang bermakna.</p>
+            </div>
+
+            <div class="section" id="section3">
+                <h2 data-number="3">Bitcoin & Zero-Sum Game</h2>
+                <p>Timothy memberikan perspektif yang balanced tentang Bitcoin, membedakan antara teknologi dan aktivitas trading-nya.</p>
+                
+                <div class="highlight">
+                    <strong>Analisis Bitcoin:</strong>
+                    <ul>
+                        <li><strong>Teknologi:</strong> Positive-sum (mudah ditransfer, efisien)</li>
+                        <li><strong>Trading:</strong> Tetap zero-sum game</li>
+                        <li><strong>Nilai:</strong> Tergantung pada permintaan dan distribusi</li>
+                    </ul>
+                </div>
+                
+                <div class="quote">
+                    Kalau 21 juta Bitcoin hanya dimiliki 1 orang dan tidak ada permintaan, maka nilainya = 0, karena tidak menciptakan value.
+                </div>
+                
+                <p><strong>Konsep Penting:</strong> Store of Value ≠ Intrinsic Value. Bitcoin bisa jadi penyimpan nilai, tapi tidak menghasilkan dividen seperti perusahaan.</p>
+            </div>
+
+            <div class="section" id="section4">
+                <h2 data-number="4">Edukasi Ekonomi & Opportunity Cost</h2>
+                <p>Timothy menekankan pentingnya memahami konsep-konsep ekonomi dasar yang sering diabaikan masyarakat.</p>
+                
+                <div class="highlight">
+                    <strong>Konsep Fundamental:</strong>
+                    <ul>
+                        <li><strong>Opportunity Cost:</strong> Biaya dari memilih suatu keputusan dibanding alternatifnya</li>
+                        <li><strong>Zero-sum Game vs Store of Value:</strong> Perbedaan antara permainan dan penyimpanan nilai</li>
+                        <li><strong>Basis Fiat Money:</strong> Bukan emas, tapi kekuatan militer (contoh: AS, Cina)</li>
+                    </ul>
+                </div>
+                
+                <p>Banyak masyarakat punya pemahaman ekonomi tanpa fondasi yang kuat, sehingga mudah terjebak dalam pemikiran yang salah tentang investasi dan keuangan.</p>
+            </div>
+
+            <div class="section" id="section5">
+                <h2 data-number="5">Propaganda & Kontrol Narasi</h2>
+                <p>Timothy belajar dari tokoh-tokoh berpengaruh dalam bidang propaganda dan psikologi massa.</p>
+                
+                <div class="highlight">
+                    <strong>Inspirasi dari Tokoh:</strong>
+                    <ul>
+                        <li><strong>Edward Bernays:</strong> Bapak propaganda modern</li>
+                        <li><strong>Warren Buffett:</strong> Master dalam komunikasi investasi</li>
+                        <li><strong>Sigmund Freud:</strong> Psikologi yang mendasari propaganda</li>
+                    </ul>
+                </div>
+                
+                <p>Ia memahami bahwa kekuatan sesungguhnya ada di tangan orang yang mampu mengontrol persepsi dan narasi publik.</p>
+                
+                <p>Kemampuan ini tidak digunakan untuk manipulasi, tetapi untuk menyampaikan edukasi yang kompleks dengan cara yang mudah dipahami.</p>
+            </div>
+
+            <div class="section" id="section6">
+                <h2 data-number="6">Bitcoin dan Kebebasan Finansial</h2>
+                <p>Bitcoin disorot sebagai alat finansial yang memberikan kebebasan dari kontrol negara dalam situasi ekstrem.</p>
+                
+                <div class="highlight">
+                    <strong>Keunggulan Bitcoin:</strong>
+                    <ul>
+                        <li>Tidak bisa diblokir oleh negara</li>
+                        <li>Berbasis peer-to-peer</li>
+                        <li>Tetap berjalan meski internet mati</li>
+                        <li>Memberikan kontrol finansial penuh kepada individu</li>
+                    </ul>
+                </div>
+                
+                <p>Dalam kondisi ekstrem seperti internet mati, hanya Bitcoin yang tetap bisa berjalan karena sifat desentralisasinya.</p>
+                
+                <p>Ini bukan tentang anti-pemerintah, tetapi tentang memiliki alternatif finansial yang independen.</p>
+            </div>
+
+            <div class="section" id="section7">
+                <h2 data-number="7">Realitas Sosial & Kritik Publik</h2>
+                <p>Timothy dan Ferry sering menghadapi kritik dari publik yang tidak memahami substansi yang mereka bawa.</p>
+                
+                <div class="highlight">
+                    <strong>Fenomena yang Terjadi:</strong>
+                    <ul>
+                        <li>Kritik tanpa memahami substansi</li>
+                        <li>Pemanfaatan kliping untuk menyerang</li>
+                        <li>Orkestrasi penghancuran reputasi di media sosial</li>
+                        <li>Viralitas yang disalahgunakan untuk agenda tertentu</li>
+                    </ul>
+                </div>
+                
+                <p>Banyak orang mengkritik tanpa paham konteks lengkap dari pesan yang disampaikan.</p>
+                
+                <p>Fenomena ini menunjukkan pentingnya media literacy dan kemampuan untuk melihat informasi secara utuh, bukan hanya potongan-potongan yang viral.</p>
+            </div>
+
+            <div class="section" id="section8">
+                <h2 data-number="8">Format Uang Masa Depan</h2>
+                <p>Timothy memiliki visi futuristik tentang evolusi sistem moneter global.</p>
+                
+                <div class="highlight">
+                    <strong>Prediksi Masa Depan:</strong>
+                    <p>Masa depan uang bukanlah fiat atau kripto, tetapi <strong>energi</strong>.</p>
+                </div>
+                
+                <div class="quote">
+                    AI akan sangat tergantung pada energi, dan energi menjadi satuan paling penting dalam nilai tukar.
+                </div>
+                
+                <p>Logika di balik prediksi ini:</p>
+                <ul>
+                    <li>AI akan mendominasi ekonomi masa depan</li>
+                    <li>AI membutuhkan energi untuk beroperasi</li>
+                    <li>Energi akan menjadi komoditas paling berharga</li>
+                    <li>Sistem moneter akan berbasis pada unit energi</li>
+                </ul>
+                
+                <p>Ini adalah perspektif yang sangat forward-thinking tentang bagaimana teknologi akan mengubah fundamental sistem ekonomi.</p>
+            </div>
+
+            <div class="section vocabulary-section" id="vocabulary">
+                <h2 data-number="📚">Kosakata Kunci & Penjelasan</h2>
+                <table class="vocab-table">
+                    <thead>
+                        <tr>
+                            <th>Istilah</th>
+                            <th>Penjelasan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Zero-Sum Game</strong></td>
+                            <td>Sistem di mana keuntungan satu pihak adalah kerugian pihak lain. Total keuntungan = total kerugian.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Store of Value</strong></td>
+                            <td>Aset yang dapat menyimpan nilai dalam jangka waktu lama, seperti emas atau Bitcoin.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Intrinsic Value</strong></td>
+                            <td>Nilai sesungguhnya dari suatu aset berdasarkan manfaat ekonominya yang nyata.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Opportunity Cost</strong></td>
+                            <td>Biaya dari memilih suatu keputusan dibanding alternatif terbaik lainnya.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fiat Money</strong></td>
+                            <td>Uang tanpa jaminan fisik seperti emas, nilainya berdasarkan kepercayaan dan kekuasaan negara.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Custodian</strong></td>
+                            <td>Penjaga aset untuk pihak lain, bukan pemilik langsung (contoh: BlackRock untuk nasabahnya).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Clipping</strong></td>
+                            <td>Potongan video pendek yang sengaja disebarkan untuk distribusi pesan yang lebih luas.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Narrative Engineering</strong></td>
+                            <td>Teknik menyusun dan mengontrol persepsi publik melalui narasi yang terstruktur.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Edward Bernays</strong></td>
+                            <td>Tokoh yang dikenal sebagai bapak propaganda modern dan public relations.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sigmund Freud</strong></td>
+                            <td>Psikolog ternama yang ide-idenya tentang alam bawah sadar mendasari propaganda modern.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Peer-to-Peer</strong></td>
+                            <td>Sistem jaringan di mana setiap peserta dapat berkomunikasi langsung tanpa perantara.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Compound Interest</strong></td>
+                            <td>Bunga yang dihitung dari pokok ditambah bunga yang sudah diperoleh sebelumnya.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>📊 Rangkuman ini disusun berdasarkan poin-poin kunci dari diskusi Ferry x Timothy Ronald</p>
+            <p>🎯 Fokus pada edukasi ekonomi, teknologi, dan visi masa depan</p>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <span class="nav-dot active" onclick="scrollToSection('section1')"></span>
+        <span class="nav-dot" onclick="scrollToSection('section2')"></span>
+        <span class="nav-dot" onclick="scrollToSection('section3')"></span>
+        <span class="nav-dot" onclick="scrollToSection('section4')"></span>
+        <span class="nav-dot" onclick="scrollToSection('section5')"></span>
+        <span class="nav-dot" onclick="scrollToSection('section6')"></span>
+        <span class="nav-dot" onclick="scrollToSection('section7')"></span>
+        <span class="nav-dot" onclick="scrollToSection('section8')"></span>
+        <span class="nav-dot" onclick="scrollToSection('vocabulary')"></span>
+    </div>
+
+    <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Scroll to top of content area
+            document.querySelector('.content-grid').scrollIntoView({
+                behavior: 'smooth'
+            });
+            
+            // Update active menu item
+            updateActiveMenuItem(sectionId);
+            
+            // Update navigation dots
+            updateNavigationDots(sectionId);
+        }
+
+        // Update active menu item
+        function updateActiveMenuItem(activeSection) {
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            const activeItem = document.querySelector(`[data-section="${activeSection}"]`);
+            if (activeItem) {
+                activeItem.classList.add('active');
+            }
+        }
+
+        // Update navigation dots
+        function updateNavigationDots(activeSection) {
+            document.querySelectorAll('.nav-dot').forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            const sectionIndex = getSectionIndex(activeSection);
+            const dots = document.querySelectorAll('.nav-dot');
+            if (dots[sectionIndex]) {
+                dots[sectionIndex].classList.add('active');
+            }
+        }
+
+        // Get section index for navigation dots
+        function getSectionIndex(sectionId) {
+            const sections = ['section1', 'section2', 'section3', 'section4', 'section5', 'section6', 'section7', 'section8', 'vocabulary'];
+            return sections.indexOf(sectionId);
+        }
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (window.pageYOffset > 300) {
+                scrollButton.classList.add('visible');
+            } else {
+                scrollButton.classList.remove('visible');
+            }
+        });
+
+        // Add hover effects to sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                if (this.classList.contains('active')) {
+                    this.style.transform = 'translateY(-5px)';
+                }
+            });
+            
+            section.addEventListener('mouseleave', function() {
+                if (this.classList.contains('active')) {
+                    this.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Add click effect to vocabulary table rows
+        document.querySelectorAll('.vocab-table tr').forEach(row => {
+            row.addEventListener('click', function() {
+                this.style.backgroundColor = '#e8f4fd';
+                setTimeout(() => {
+                    this.style.backgroundColor = '';
+                }, 200);
+            });
+        });
+
+        // Add click event to navigation dots
+        document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                const sections = ['section1', 'section2', 'section3', 'section4', 'section5', 'section6', 'section7', 'section8', 'vocabulary'];
+                scrollToSection(sections[index]);
+            });
+        });
+    </script>
+</body>
+</html>
